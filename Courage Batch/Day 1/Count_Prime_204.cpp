@@ -20,27 +20,27 @@ Solution:
 */
 class Solution {
 public:
-    bool validPrime(int n) {
-        if(n == 0 || n == 1) {
-            return false;
-        }
-        for(int i=2; i*i<=n; i++) {
-            if(n%i == 0) {
-                return false;
-            }
-        }
-        return true;
-    }
     int countPrimes(int n) {
-        if(n == 0 || n == 1) {
+        // base case
+        if(n==0) {
             return 0;
         }
-        int count = 0;
-        for(int i=2; i<n; i++) {
-            if(validPrime(i)) {
-                count++;
+        vector<bool> prime(n,true);
+        prime[0] = prime[1] = false;
+        int ans = 0;
+        for(int i=2; i<n; i++)
+        {
+            if(prime[i])
+            {
+                ans++;
+                int j=i*2;
+                while(j<n)
+                {
+                    prime[j] = false;
+                    j = j+i;
+                }
             }
         }
-        return count;
+        return ans;
     }
 };
