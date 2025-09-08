@@ -17,19 +17,16 @@ int maximumSumSubarray(vector<int>& arr, int n, int k) {
 
     // Optimize Approach using Sliding Window Approach
     int maxSum = INT_MIN;
-    int prevSum = 0;
+    int currSum = 0;
     for(int i=0; i<k; i++) {
-        prevSum = prevSum + arr[i];
+        currSum = currSum + arr[i];
     }
-    maxSum = prevSum;
+    maxSum = currSum;
     int i = 1;
     int j = k;
     while(j < n) {
-        int currSum = prevSum + arr[j] - arr[i-1];
-        if(currSum > maxSum) {
-            maxSum = currSum;
-        }
-        prevSum = currSum;
+        currSum = currSum + arr[j] - arr[i-1];
+        maxSum = max(maxSum, currSum);
         i++;
         j++;
     }
