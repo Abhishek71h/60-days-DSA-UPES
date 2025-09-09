@@ -52,7 +52,7 @@ It’s not just a collection of code – it’s a **journey of discipline, consi
 ## 🚀 How to Use
 1. Clone this repo:
    ```bash
-   git clone https://github.com/<your-username>/60-days-DSA-UPES.git
+   git clone https://github.com/Abhishek71h/60-days-DSA-UPES.git
    ```
 
 2. Compile & run a C++ solution:
