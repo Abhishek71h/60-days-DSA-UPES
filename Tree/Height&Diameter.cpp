@@ -76,7 +76,42 @@ int diameter(Node* root) {
     // int TotalDiameter = 1 + Height(root->left) + Height(root->right);
     int ans = max(TotalDiameter, max(leftDiameter, rightDiameter));
     return ans;
+}
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+
+// Given the root of a binary tree, return the length of the diameter of the tree.
+// The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
+// The length of a path between two nodes is represented by the number of edges between them.
+// Fastest Method -> T.C is O(n) and S.C is O(n) due to recursive stack
+class Solution {
+public:
+    int maxDiameter = 0;
+    int height(TreeNode* root) {
+        if(root == NULL) {
+            return 0;
+        }
+        int leftHeight = height(root -> left);
+        int rightHeight = height(root -> right);
+        int currDiameter = leftHeight + rightHeight;
+        maxDiameter = max(maxDiameter, currDiameter);
+        return max(leftHeight, rightHeight) + 1;
     }
+    int diameterOfBinaryTree(TreeNode* root) {
+        height(root);
+        return maxDiameter;
+    }
+};
 
 int main() {
     Node* root = NULL;
