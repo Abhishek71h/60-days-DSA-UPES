@@ -61,7 +61,7 @@ void printRightView(Node* root) {
 
 int main() {
     Node* root = buildTree();
-    cout << "\nLeft View: ";
+    cout << "\nRight View: ";
     printRightView(root);
     return 0;
 }

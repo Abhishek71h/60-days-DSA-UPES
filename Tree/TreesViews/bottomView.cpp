@@ -36,7 +36,7 @@ void printBottomView(Node* root) {
     if(root == NULL) {
         return;
     }
-    map<int, int> topNode;
+    map<int, int> bottomNode;
     queue<pair<Node*, int>> q;
     q.push({root, 0});
 
@@ -47,7 +47,7 @@ void printBottomView(Node* root) {
         Node* frontNode = temp.first;
         int hd = temp.second;
 
-        topNode[hd] = frontNode -> data;
+        bottomNode[hd] = frontNode -> data;
 
         if(frontNode -> left) {
             q.push({frontNode -> left, hd-1});
@@ -57,7 +57,7 @@ void printBottomView(Node* root) {
             q.push({frontNode -> right, hd+1});
         }
     }
-    for(auto i: topNode) {
+    for(auto i: bottomNode) {
         cout << i.first << " --> " << i.second << endl;
     }
 }
